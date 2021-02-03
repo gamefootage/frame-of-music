@@ -33,6 +33,9 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
+    
+- [Musixmatch API](https://developer.musixmatch.com/)
+    - The project uses **Musixmatch API** to perform thorough searches of millions of songs.
 
 
 ## Testing
