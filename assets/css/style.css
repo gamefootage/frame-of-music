@@ -1,23 +1,40 @@
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&family=Montserrat&display=swap');
 
 body {
-    height: 100vh;
-    /* Gradient created using coolors.co gradient creator  */
-    background: hsla(275, 100%, 25%, 1);
-    background: linear-gradient(30deg, hsla(275, 100%, 25%, 1) 14%, hsla(254, 83%, 39%, 1) 57%, hsla(230, 71%, 53%, 1) 100%);
-    background: -moz-linear-gradient(30deg, hsla(275, 100%, 25%, 1) 14%, hsla(254, 83%, 39%, 1) 57%, hsla(230, 71%, 53%, 1) 100%);
-    background: -webkit-linear-gradient(30deg, hsla(275, 100%, 25%, 1) 14%, hsla(254, 83%, 39%, 1) 57%, hsla(230, 71%, 53%, 1) 100%);
+    /* Gradient obtained from UI Gradients (https://uigradients.com)  */
+    background: #ff00cc;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #333399, #ff00cc);
+    background: linear-gradient(to right, #333399, #ff00cc);
     background-repeat: no-repeat;
 }
 
-h1 {
+.heading {
+    background-color: rgba(0, 0, 0, 0.5);
     color: #F5FFFE;
-    font-family: 'Ubuntu Condensed', sans-serif;
     text-align: center;
-    font-size: 4rem;
 }
 
-button {
-    display: none;
+.title {
+    font-family: 'Assistant', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.6rem;
+    text-shadow: 4px 1px 0px rgba(190,171,171,0.47);
+}
+
+.subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+
+form {
+    height: 83vh;
+    text-align: center;
+}
+
+#song-btn {
+    margin-top: 10rem !important;
+    width: 25rem;
+    background-color: #53424D;
+    color: #fff;
 }

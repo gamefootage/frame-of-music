@@ -6,13 +6,28 @@
     <title>Frame Of Music</title>
     <link rel='shortcut icon' type='image/x-icon' href='/assets/images/favicon.ico' />
 
+    <!-- JQuery 3.5.1 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap 4.5.2 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 </head>
 <body>
-    <h1>Frame Of Music</h1>
-    <div id="song-response"></div>
-    <button onclick="getRandomSongs()">Get Songs</button>
+    <header>
+        <div class="heading p-3">
+            <h1 class="title">Frame Of Music</h1>
+            <h4 class="subtitle">Get randomly generated songs suited to your needs</h4>
+        </div>
+    </header>
 
+    <section>   
+        <form action="get">
+            <button id="song-btn" class="btn btn-lg py-3 px-5 my-auto" onclick="getRandomSongs()">Get Songs</button>
+        </form>
+    </section>
+
+    <footer>
+
+    </footer>
     <script src="assets/js/randomSongs.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </body>
