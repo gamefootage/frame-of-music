@@ -2,12 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant&family=Montserrat&display=swap');
 
 body {
-    height: 120vh;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     /* Gradient obtained from UI Gradients (https://uigradients.com)  */
     background: #ff00cc;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #333399, #ff00cc);
     background: linear-gradient(to right, #333399, #ff00cc);
-    background-repeat: no-repeat;
 }
 
 .heading {
@@ -30,17 +32,17 @@ body {
 
 #random-songs-filters {
     background: rgba(0, 0, 0, 0.6);
-    height: 15rem;
-    line-height: 15rem;
+    height: 8rem;
+    line-height: 8rem;
 }
 
 #random-songs-form {
     text-align: center;
-    margin: 10rem 30rem !important;
+    margin: 5rem 5rem !important;
     color: #fff;
 }
 
-.optional {
+.inactive {
     display: none;
 }
 
@@ -52,7 +54,6 @@ body {
     content: 'Hide Filters Panel';
 }
 
-
 /* Disable text highlighting by user (https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting) */
 .no-select {
     -webkit-touch-callout: none;
@@ -62,4 +63,3 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-  

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Frame Of Music is a random song generator and lyric finder powered by Musixmatch API. Millions of songs all a click away!"/>
+    <meta name="description" 
+     content="Frame Of Music is a random song generator and lyric finder powered by Musixmatch API. Millions of songs all a click away!"/>
     
     <link rel='shortcut icon' type='image/x-icon' href='/assets/images/favicon.ico' />
     <title>Frame Of Music</title>
@@ -32,23 +33,30 @@
     </header>
 
     <section>
-        <div class="filter-group text-center container-fluid">
-            <button id="show-panel" class="btn btn-outline-light px-3 py-2 mt-5" type="button" data-toggle="collapse" data-target="#filter-panel" aria-expanded="false" 
-             aria-controls="filter-panel"></button>
-            <div class="collapse" id="filter-panel">
-                <div class="mt-5 px-5 text-left" id="random-songs-filters">
-                    <div class="row">
-                        <div class="col text-center">
-                            <button data-filter="inactive" class="btn btn-lg btn-outline-success mx-auto">Genre <i class="fas fa-check"></i></button>
+        <div class="filter-group text-center">
+            <button id="show-panel" class="btn btn-outline-light px-3 py-2 my-5" type="button" data-toggle="collapse" data-target="#filter-panel" 
+                aria-expanded="false" aria-controls="filter-panel"></button>
+            <div class="collapse container-fluid" id="filter-panel">
+                <div class="row" id="random-songs-filters">
+                        <div class="filter-btn-group col">
+                            <button name="genre-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                Genre <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
+                            </button>
                         </div>
-                        <div class="col text-center">
-                            <button data-filter="inactive" class="btn btn-lg btn-outline-success mx-auto">Artist <i class="fas fa-check"></i></button>
+                        <div class="filter-btn-group col">
+                            <button name="artist-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                Artist <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
+                            </button>
                         </div>
-                        <div class="col text-center">
-                            <button data-filter="inactive" class="btn btn-lg btn-outline-success mx-auto">Lyrics <i class="fas fa-check"></i></button>
+                        <div class="filter-btn-group col">
+                            <button name="hasLyrics-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                Lyrics <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
+                            </button>
                         </div>
-                        <div class="col text-center">
-                            <button data-filter="inactive" class="btn btn-lg btn-outline-success mx-auto">Popularity <i class="fas fa-check"></i></button>
+                        <div class="filter-btn-group col">
+                            <button name="popularity-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                Popularity <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -56,38 +64,44 @@
         </div>
 
         <form id="random-songs-form">
-            <div class="form-group optional">
-                <label for="random-songs-genre">Genre (optional)</label>
-                <input type="text" class="form-control" id="random-songs-genre" aria-describedby="Genre of random song" placeholder="Enter preferred genre">
-            </div>
-            <div class="form-group optional">
-                <label for="random-songs-artist">Artist (optional)</label>
-                <input type="text" class="form-control" id="random-songs-artist" placeholder="Enter preferred artist">
-            </div>
-            <div class="form-group optional">
-                <label for="random-songs-lyrics-check-group">Lyrics (optional)</label>
-                <div id="random-songs-lyrics-check-group" class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox" id="random-songs-lyrics-check" checked>
+
+            <div class="form-row">
+                <div data-field="genre" class="form-group col inactive">
+                    <label for="random-songs-genre">Genre (optional)</label>
+                    <input type="text" class="form-control" id="random-songs-genre" aria-describedby="Genre of random song" placeholder="Enter preferred genre">
+                </div>
+                <div data-field="artist" class="form-group col inactive">
+                    <label for="random-songs-artist">Artist (optional)</label>
+                    <input type="text" class="form-control" id="random-songs-artist" placeholder="Enter preferred artist">
+                </div>
+                <div data-field="hasLyrics" class="form-group col inactive">
+                    <label for="random-songs-hasLyrics-roup">Lyrics (optional)</label>
+                    <div id="random-songs-hasLyrics-group" class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" id="random-songs-hasLyrics" checked>
+                            </div>
                         </div>
+                        <label class="form-control text-left no-select" for="random-songs-hasLyrics">Song Has Lyrics</label>
                     </div>
-                    <label class="form-control text-left no-select" for="random-songs-lyrics-check">Song Has Lyrics</label>
                 </div>
             </div>
-            <div class="form-group optional">
-                <label for="random-songs-rank">Popularity Rank 0-100 (Optional)</label>
-                <div id="random-songs-rank" class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <select class="custom-select" id="random-songs-rank-selector">
-                            <option value="greater" selected>&gt;</option>
-                            <option value="greater-equal">&gt;</option>
-                            <option value="less">&#60;</option>
-                            <option value="less-equal">&#60;=</option>
-                            <option value="equal">=</option>
-                        </select>
+
+            <div class="form-row">
+                <div data-field="popularity" class="form-group col inactive">
+                    <label for="random-songs-rank">Popularity Rank 0-100 (Optional)</label>
+                    <div id="random-songs-rank" class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <select class="custom-select" id="random-songs-rank-selector">
+                                <option value="greater" selected>&gt;</option>
+                                <option value="greater-equal">&gt;</option>
+                                <option value="less">&#60;</option>
+                                <option value="less-equal">&#60;=</option>
+                                <option value="equal">=</option>
+                            </select>
+                        </div>
+                        <input id="random-songs-rank-value" class="form-control" type="number" min="0" max="100" placeholder="Enter Popularity Rank">
                     </div>
-                    <input id="random-songs-rank-value" class="form-control" type="number" min="0" max="100" placeholder="Enter Popularity Rank">
                 </div>
             </div>
             <button type="submit" id="get-songs-btn" class="btn btn-secondary btn-lg py-3 px-5 my-5 shadow">Get Songs</button>
