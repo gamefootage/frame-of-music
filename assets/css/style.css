@@ -30,6 +30,11 @@ body {
     font-size: 1rem;
 }
 
+.subtext {
+    font-size: small;
+    display: block;
+}
+
 #random-songs-filters {
     background: rgba(0, 0, 0, 0.6);
     height: 8rem;
@@ -38,7 +43,7 @@ body {
 
 #random-songs-form {
     text-align: center;
-    margin: 5rem 5rem !important;
+    margin: 3rem 5rem !important;
     color: #fff;
 }
 
@@ -52,6 +57,12 @@ body {
 
 #show-panel[aria-expanded=true]::after {
     content: 'Hide Filters Panel';
+}
+
+#results-table {
+    width: 70%;
+    text-align: center;
+    margin: auto;
 }
 
 /* Disable text highlighting by user (https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting) */

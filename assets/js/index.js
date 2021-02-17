@@ -8,8 +8,10 @@ $(document).ready(function() {
 
         activeFilters.each(function() {
             let field = $(this).data("field");
-            if (field == "hasLyrics") {
+            if (field == "favourite") {
                 var value = $(this).find(`#random-songs-${field}`).prop("checked") ? 1 : 0;
+            } else if (field == "results") {
+                var value = ($(this).find(`#random-songs-${field} input[type=radio]:checked`).val() == "true");
             } else {
                 var value = $(this).find(`#random-songs-${field}`).val();
             }
