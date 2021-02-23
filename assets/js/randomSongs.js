@@ -123,9 +123,14 @@ function addTrackCallback(json) {
                 randomSongs.forEach(function(item) {
                     $("#results-table tbody").append(
                         `<tr>
-                            <td><a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a></td>
+                            <td><a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a><img class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/></td>
+                            <td>${item.artist_name}</td>
                         </tr>`
-                    )
+                    );
+
+                    if (item.explicit == 1) {
+                        $(`#${item.track_id}`).append('<img class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/>');
+                    }
                 });
             }
         } else {
@@ -170,9 +175,15 @@ function addRandomTrackCallback(json) {
                 randomSongs.forEach(function(item) {
                     $("#results-table tbody").append(
                         `<tr>
-                            <td>${item.track_name}</td>
+                            <td id="${item.track_id}"><a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a></td>
+                            <td>${item.artist_name}</td>
                         </tr>`
-                    )
+                    );
+
+                    // Icon retrieved from Icons8 (https://icons8.com/icon/52182/explicit)
+                    if (item.explicit == 1) {
+                        $(`#${item.track_id}`).append('<img data-toggle="tooltip" data-placement="top" title="Song contains explicit lyrics" class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/>');
+                    }
                 });
             }
         } else {
