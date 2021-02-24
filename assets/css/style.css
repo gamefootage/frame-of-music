@@ -12,6 +12,15 @@ body {
     background: linear-gradient(to right, #333399, #ff00cc);
 }
 
+.navbar-dark {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Gradient obtained from UI Gradients (https://uigradients.com)  */
+    background: #ff00cc !important;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #333399, #ff00cc) !important;
+    background: linear-gradient(to right, #333399, #ff00cc) !important;
+}
+
 .heading {
     background-color: rgba(0, 0, 0, 0.5);
     color: #F5FFFE;
@@ -46,6 +55,16 @@ body {
     margin: 3rem 5rem !important;
     color: #fff;
 }
+
+/* Stack Overflow solution (https://stackoverflow.com/questions/9590313/how-to-use-the-scroll-and-max-options-in-autocomplete) */
+.ui-autocomplete {
+    max-height: 15rem;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
+} 
 
 .inactive {
     display: none;

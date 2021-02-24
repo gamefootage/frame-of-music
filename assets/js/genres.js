@@ -1,5 +1,5 @@
 var genreList = document.getElementById("random-songs-genre").options
-var genres = [
+window.genres = [
     {"Blues": 2},
     {"Comedy": 3},
     {"Children's Music": 4},
@@ -116,5 +116,14 @@ var genres = [
 ];
 
 $(document).ready(function() {
-    genres.forEach(option => genreList.add( new Option(Object.keys(option)[0], Object.values(option)[0]) ));
+    var genreNames = [];
+    window.genres.forEach( obj => genreNames.push(Object.keys(obj)[0]) )
+    $("#random-songs-genre").autocomplete({
+        source: genreNames,
+        minLength: 0
+    });
+
+    $("#random-songs-genre").on("focus", function() {
+        $(this).autocomplete("search", "");
+    });
 });
