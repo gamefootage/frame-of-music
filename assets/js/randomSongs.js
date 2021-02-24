@@ -123,7 +123,7 @@ function addTrackCallback(json) {
                 randomSongs.forEach(function(item) {
                     $("#results-table tbody").append(
                         `<tr>
-                            <td><a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a><img class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/></td>
+                            <td id="${item.track_id}"><a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a></td>
                             <td>${item.artist_name}</td>
                         </tr>`
                     );
