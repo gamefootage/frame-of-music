@@ -91,6 +91,19 @@ body {
     content: 'Hide Filters Panel';
 }
 
+#form-section::after {
+    content: "";
+    background: url("../images/note.png");
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1; 
+}
+
 #results-table {
     width: 70%;
     text-align: center;
@@ -99,14 +112,43 @@ body {
 
 /* END Homepage Section */
 
-    #charts-input-group {
-        width: 70%;
-        margin: auto;
-    }
+#charts-form-section {
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+}
 
-    th[name=chart-index] {
-        width: 5rem;
-    }
+#charts-form-section::after {
+    content: "";
+    background: url("../images/globe.png");
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+    top: 23%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+#charts-input-group {
+    width: 70%;
+    margin: auto;
+}
+
+th[name=chart-index] {
+    width: 5rem;
+}
+
+#charts-results-table {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 2;
+    column-gap: 20px;
+    background-color: #fff !important;
+    border-color: #000 !important;
+}
 
 /* Charts Sectiom */
 

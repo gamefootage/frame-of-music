@@ -1,32 +1,36 @@
 var apiKey = '8ebb100f8dbd94b032393de929156869';
 
 $(document).ready(function() {
-    $("#get-charts-btn").on("click", function() {
-        var countryName = $("charts-countries").val();
+    $("#global-charts-form").on("submit", function(e) {
+        e.preventDefault();
+        var countryName = $("#charts-country").val();
         var countryCode = window.countries.find(item => Object.keys(item)[0] == countryName);
-        getCountryChart(countryCode);
+        getCountryChart(countryCode[countryName]);
     });
 });
 
 function getCountryChart(countryCode) {
-    var url = `https://api.musixmatch.com/ws/1.1/chart.tracks.get?format=jsonp&callback=callback&page=1&page_size=20&country=${countryCode}&apikey=8ebb100f8dbd94b032393de929156869`
+    debugger;
+    var url = `https://api.musixmatch.com/ws/1.1/chart.tracks.get?format=jsonp&callback=chartsJsonpCallback&page=1&page_size=20&country=${countryCode}&apikey=8ebb100f8dbd94b032393de929156869`
     $.ajax({
         url: url,
         type: "GET",
         dataType: "jsonp",
         jsonpCallback: "chartsJsonpCallback",
-        beforeSend: function () {
-            $("#spinner").css("visibility", "visible");
-        }
     });
 }
 
 function chartsJsonpCallback(json) {
+    debugger;
     var available = json.message.header.available;
 
-    if (available < 1) {
-        alert("This countries chart doesn't seem to exist. Please choose one of the availbel country options.");
-        return false;
+    if (available < 1 || !available) {
+        if (json.message.header.status_code !== 401) {
+            alert("This countries chart doesn't seem to exist. Please choose one of the availbel country options.");
+            return false;
+        } else {
+            alert("Our API's daily rate limit has been exceeded, please visit our site again tomorrow.")
+        }
     }
 
     $("#charts-results-table tbody").empty();

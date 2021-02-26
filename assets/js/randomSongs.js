@@ -7,7 +7,6 @@ function getRandomSongs(formData) {
     formData = formData
     randomSongs = [];
     window.usedPages = [];
-    $("#results-table tbody").empty();
     window.favourite = null;
     url = 'https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=initialJsonpCallback&f_lyrics_language=en';
 
@@ -65,7 +64,12 @@ function initialJsonpCallback(json) {
         window.songsRetrieved = 0;
         getSongList();
     } else {
-        alert("No songs found with those details. Try again.");
+        if (json.message.header.status_code !== 401) {
+            alert("Sorry, I couldn't find any songs with these inputs. Please try again.");
+            return false;
+        } else {
+            alert("Our API's daily rate limit has been exceeded, please visit our site again tomorrow.")
+        }
     }
 };
 
@@ -90,6 +94,7 @@ function getSongList() {
 }
 
 function addTrackCallback(json) {
+    var json = json;
     var trackList = json.message.body.track_list;
 
     if (window.favourite) {
@@ -105,6 +110,10 @@ function addTrackCallback(json) {
         var trackIncluded = false;
         if (randomSongs) {
             do {
+                if (index >= trackList.length) {
+                    rerun = false;
+                    return trackIncluded = true;
+                }
                 var rerun = false;
                 randomSongs.forEach(function(item) {
                     if (item.commontrack_id == trackID) {
@@ -119,60 +128,74 @@ function addTrackCallback(json) {
 
             window.songsRetrieved++;
             if (window.songsRetrieved < window.retrieveSongcount) {
-                getSongList();
+                addTrackCallback(json);
             } else {
                 drawResultsTable(randomSongs);
             }
         } else {
-            getSongList();
+            if (randomSongs) {
+                drawResultsTable(randomSongs);
+            } else {
+                alert("Sorry, I couldn't find any songs with these inputs. Please try again.");
+            }
         }
     } else {
-        alert("No songs favourited. Try again.");
+        alert("No songs favourited. Please try again.");
         return;
     }
 }
 
 function addRandomTrackCallback(json) {
     // debugger;
+    var json = json;
     var trackList = json.message.body.track_list;
 
     if (window.favourite) {
         trackList = trackList.filter( (item) => item.track.num_favourite == 1 );
     }
     if (trackList.length) {
-        var trackIndex = getRandomInt(trackList.length);
-        let track = trackList[trackIndex].track;
-        let trackID = track.commontrack_id;
-
         // Make sure track isn't already included
-        var trackIncluded = false;
-        if (randomSongs) {
-            randomSongs.forEach(function(item) {
-                if (item.commontrack_id == trackID) {
-                    trackIncluded = true;
-                    return;
-                }
-            });
-        }
-        debugger;
-        if (!trackIncluded) {
-            randomSongs.push(track);
+        do {
+            var trackIncluded = false;
 
-            window.songsRetrieved++;
-            if (window.songsRetrieved < window.retrieveSongcount) {
+            var trackIndex = getRandomInt(trackList.length);
+            var track = trackList[trackIndex].track;
+
+            var trackID = track.commontrack_id;
+
+            if (randomSongs) {
+                randomSongs.forEach(function(item) {
+                    if (item.commontrack_id == trackID) {
+                        trackIncluded = true;
+                        return;
+                    }
+                });
+            } else {
+                return rerun = false;
+            }
+        } while(rerun);
+
+        randomSongs.push(track);
+
+        window.songsRetrieved++;
+        if (window.songsRetrieved < window.retrieveSongcount) {
+            if (window.pages > 1) {
                 getSongList();
             } else {
-                drawResultsTable(randomSongs);
+                addRandomTrackCallback(json);
             }
         } else {
-            getSongList();
+            drawResultsTable(randomSongs);
         }
+
     } else {
         getSongList();
     }
 }
 
 function drawResultsTable (randomSongs) {
+
+    $("#results-table tbody").empty();
 
     randomSongs.forEach(function(item) {
         $("#results-table tbody").append(

@@ -12,12 +12,12 @@ window.countries = [
 $(document).ready(function() {
     var countryNames = [];
     window.countries.forEach( obj => countryNames.push(Object.keys(obj)[0]) )
-    $("#charts-countries").autocomplete({
+    $("#charts-country").autocomplete({
         source: countryNames,
         minLength: 0
     });
 
-    $("#charts-countries").on("focus", function() {
+    $("#charts-country").on("focus", function() {
         $(this).autocomplete("search", "");
     });
 });
