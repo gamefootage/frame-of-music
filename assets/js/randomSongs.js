@@ -1,5 +1,3 @@
-var baseURL = 'https://api.musixmatch.com/ws/1.1/';
-var apiKey = '8ebb100f8dbd94b032393de929156869';
 var formData;
 var url;
 var randomSongs = [];

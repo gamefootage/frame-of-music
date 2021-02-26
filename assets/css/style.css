@@ -98,10 +98,16 @@ body {
 }
 
 /* END Homepage Section */
+
     #charts-input-group {
         width: 70%;
         margin: auto;
     }
+
+    th[name=chart-index] {
+        width: 5rem;
+    }
+
 /* Charts Sectiom */
 
 /* END Charts section */
