@@ -45,7 +45,10 @@ function getRandomSongs(formData) {
         url: url + '&s_track_rating=desc&quorum_factor=1&page_size=1&page=1&apikey=8ebb100f8dbd94b032393de929156869',
         type: "GET",
         dataType: "jsonp",
-        jsonpCallback: "initialJsonpCallback"
+        jsonpCallback: "initialJsonpCallback",
+        beforeSend: function () {
+            $("#spinner").css("visibility", "visible");
+        }
     });
 };
 
@@ -120,18 +123,7 @@ function addTrackCallback(json) {
             if (window.songsRetrieved < window.retrieveSongcount) {
                 getSongList();
             } else {
-                randomSongs.forEach(function(item) {
-                    $("#results-table tbody").append(
-                        `<tr>
-                            <td id="${item.track_id}"><a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a></td>
-                            <td>${item.artist_name}</td>
-                        </tr>`
-                    );
-
-                    if (item.explicit == 1) {
-                        $(`#${item.track_id}`).append('<img class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/>');
-                    }
-                });
+                drawResultsTable(randomSongs);
             }
         } else {
             getSongList();
@@ -172,19 +164,7 @@ function addRandomTrackCallback(json) {
             if (window.songsRetrieved < window.retrieveSongcount) {
                 getSongList();
             } else {
-                randomSongs.forEach(function(item) {
-                    $("#results-table tbody").append(
-                        `<tr>
-                            <td id="${item.track_id}"><a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a></td>
-                            <td>${item.artist_name}</td>
-                        </tr>`
-                    );
-
-                    // Icon retrieved from Icons8 (https://icons8.com/icon/52182/explicit)
-                    if (item.explicit == 1) {
-                        $(`#${item.track_id}`).append('<img data-toggle="tooltip" data-placement="top" title="Song contains explicit lyrics" class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/>');
-                    }
-                });
+                drawResultsTable(randomSongs);
             }
         } else {
             getSongList();
@@ -192,6 +172,29 @@ function addRandomTrackCallback(json) {
     } else {
         getSongList();
     }
+}
+
+function drawResultsTable (randomSongs) {
+
+    randomSongs.forEach(function(item) {
+        $("#results-table tbody").append(
+            `<tr>
+                <td id="${item.track_id}"><a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a></td>
+                <td>${item.artist_name}</td>
+                <td>${item.album_name}</td>
+            </tr>`
+        );
+
+        // Icon retrieved from Icons8 (https://icons8.com/icon/52182/explicit)
+        if (item.explicit == 1) {
+            $(`#${item.track_id}`).append('<img data-toggle="tooltip" data-placement="top" title="Song contains explicit lyrics" class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/>');
+        }
+    });
+
+    $("#spinner").css("visibility", "hidden");
+
+    $([document.documentElement, document.body]).animate({scrollTop: $("#results-table").offset().top }, 2000);
+
 }
 
 // Mozilla example of getting interger between 1 and max (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random)

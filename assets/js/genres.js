@@ -1,4 +1,3 @@
-var genreList = document.getElementById("random-songs-genre").options
 window.genres = [
     {"Blues": 2},
     {"Comedy": 3},

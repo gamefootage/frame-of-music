@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" 
+     content="Frame Of Music is a random song generator and lyric finder powered by Musixmatch API. Millions of songs all a click away!"/>
+    
+    <link rel='shortcut icon' type='image/x-icon' href='/assets/images/favicon.ico' />
+    <title>Frame Of Music</title>
+    
+    <!-- Bootstrap CSS 4.5.2 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- JQuery 3.5.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- JQuery UI JS 1.12.1 -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- JQuery UI CSS 1.12.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+
+    <!-- Popper JS 2.6 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JavaScript 4.5.2 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Select2 JS 4.0.13 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <!-- Font Awesome 5.15.2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+</head>
+<body>
+    <div class="cssload-container">
+        <div class="cssload-whirlpool"></div>
+    </div>
+    <!-- START of page -->
+    <div class="page-wrapper">
+
+        <header>
+            <nav class="navbar sticky-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#"><img src="/assets/images/favicon.ico" alt="Frame Of Music Logo" /></a>
+            </nav>
+            <div class="heading p-3">
+                <h1 class="title">Top 20 Charts</h1>
+                <h1 class="subtitle">Get the top 20 songs of different country's charts</h1>
+            </div>
+        </header>
+
+        <!-- START of content -->
+        <div class="content-wrapper">
+
+            <section id="charts">
+
+                <div id="charts-input-group" class="px-5 text-center mt-5">
+                    <input id="charts-countries" type="text" class="form-control mb-4" placeholder="Enter Country Name">
+                    <button class="btn btn-primary btn-lg">Get Charts</button>
+                </div>
+
+            </section>
+
+        </div>
+        <!-- END of content -->
+
+        <footer class="text-white py-5 px-3">
+            <div class="copyright">
+                <span>
+                    Copyright © 2021
+                </span>
+            </div>
+            <div class="api-credit">
+                <span>
+                    Powered by <a class="text-decoration-none" href="https://developer.musixmatch.com/">MusixMatch API</a>
+                </span>
+            </div>
+            <div class="social">
+                <a class="text-decoration-none text-white mx-2" href="https://www.linkedin.com/in/ben-kelly-a36b001b2/" target="_blank"><i class="fab fa-linkedin" aria-label="LinkedIn logo and link to my LinkedIn account"></i></a>
+                <a class="text-decoration-none text-white mx-2" href="https://github.com/gamefootage" target="_blank"><i class="fab fa-github" aria-label="GitHub logo and link to my GitHub account"></i></a>
+            </div>
+        </footer>
+
+    </div>
+    <!-- END of page -->
+
+    <!-- Local JS Files -->
+    <script type="text/javascript" src="assets/js/index.js"></script>
+    <script type="text/javascript" src="assets/js/countries.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</body>
+</html>

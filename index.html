@@ -34,130 +34,160 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar sticky-top navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"><img src="/assets/images/favicon.ico" alt="Frame Of Music Logo" /></a>
-        </nav>
-        <div class="heading p-3">
-            <h1 class="title">Frame Of Music</h1>
-            <h1 class="subtitle">Get randomly generated songs suited to your needs</h1>
-        </div>
-    </header>
+    <div class="cssload-container">
+        <div class="cssload-whirlpool"></div>
+    </div>
+    <!-- START of page -->
+    <div class="page-wrapper">
 
-    <section id="form-section">
-        <div class="filter-group text-center">
-            <button id="show-panel" class="btn btn-outline-light px-3 py-2 my-5" type="button" data-toggle="collapse" data-target="#filter-panel" 
-                aria-expanded="false" aria-controls="filter-panel"></button>
-            <div class="collapse container-fluid" id="filter-panel">
-                <div class="row" id="random-songs-filters">
-                        <div class="filter-btn-group col">
-                            <button name="genre-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
-                                Genre <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
-                            </button>
-                        </div>
-                        <div class="filter-btn-group col">
-                            <button name="artist-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
-                                Artist <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
-                            </button>
-                        </div>
-                        <div class="filter-btn-group col">
-                            <button name="track-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
-                                Track <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
-                            </button>
-                        </div>
-                        <div class="filter-btn-group col">
-                            <button name="lyrics-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
-                                Lyrics <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
-                            </button>
-                        </div>
-                        <div class="filter-btn-group col">
-                            <button name="keyword-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
-                                Keyword(s) <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
-                            </button>
-                        </div>
-                        <div class="filter-btn-group col">
-                            <button name="favourite-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
-                                Favourite <i class="fas fa-check"></i><i class="fas fa-times" style="display: none;"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <header>
+            <nav class="navbar sticky-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#"><img src="/assets/images/favicon.ico" alt="Frame Of Music Logo" /></a>
+            </nav>
+            <div class="heading p-3">
+                <h1 class="title">Frame Of Music</h1>
+                <h1 class="subtitle">Get randomly generated songs suited to your needs</h1>
             </div>
-        </div>
+        </header>
 
-        <form id="random-songs-form">
+        <!-- START of content -->
+        <div class="content-wrapper">
 
-            <div class="form-row">
-                <div data-field="genre" class="form-group col inactive">
-                    <label for="random-songs-genre">Genre</label>
-                    <input class="form-control" id="random-songs-genre" placeholder="Search preferred genre"/>
-                </div>
-                <div data-field="artist" class="form-group col inactive">
-                    <label for="random-songs-artist">Artist</label>
-                    <input type="text" class="form-control" id="random-songs-artist" placeholder="Enter preferred artist"/>
-                </div>
-                <div data-field="keyword" class="form-group col inactive">
-                    <label for="random-songs-keyword">Keyword(s)</label>
-                    <input type="text" class="form-control" id="random-songs-keyword" placeholder="Enter keyword(s) in song, artist, or lyrics"/>
-                </div>
-                <div data-field="track" class="form-group col inactive">
-                    <label for="random-songs-track">Track Title</label>
-                    <input type="text" class="form-control" id="random-songs-track" placeholder="Enter Track Title (partial or full)"/>
-                </div>
-                <div data-field="lyrics" class="form-group col inactive">
-                    <label for="random-songs-lyrics">Partial Lyrics</label>
-                    <input type="text" class="form-control" id="random-songs-lyrics" placeholder="Enter word(s) in lyrics"/>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div data-field="favourite" class="form-group col inactive mb-3">
-                    <label for="random-songs-favourite-group">Favourite (Song is favourite of most users)*</label>
-                    <div id="random-songs-favourite-group" class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="checkbox" id="random-songs-favourite" checked/>
+            <section id="form-section">
+                <div class="filter-group text-center">
+                    <button id="show-panel" class="btn btn-outline-light px-3 py-2 my-5" type="button" data-toggle="collapse" data-target="#filter-panel" 
+                        aria-expanded="false" aria-controls="filter-panel"></button>
+                    <div class="collapse container-fluid" id="filter-panel">
+                        <div class="row" id="random-songs-filters">
+                                <div class="filter-btn-group col">
+                                    <button name="genre-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                        Genre <i class="fas fa-check" alt="Tick to use genre filter"></i><i class="fas fa-times" alt="X to remove genre filter" style="display: none;"></i>
+                                    </button>
+                                </div>
+                                <div class="filter-btn-group col">
+                                    <button name="artist-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                        Artist <i class="fas fa-check" alt="Tick to use artist filter"></i><i class="fas fa-times" alt="X to remove artist filter" style="display: none;"></i>
+                                    </button>
+                                </div>
+                                <div class="filter-btn-group col">
+                                    <button name="track-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                        Track <i class="fas fa-check" alt="Tick to use track filter"></i><i class="fas fa-times" alt="X to remove track filter" style="display: none;"></i>
+                                    </button>
+                                </div>
+                                <div class="filter-btn-group col">
+                                    <button name="lyrics-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                        Lyrics <i class="fas fa-check" alt="Tick to use lyric filter"></i><i class="fas fa-times" alt="X to remove lyric filter" style="display: none;"></i>
+                                    </button>
+                                </div>
+                                <div class="filter-btn-group col">
+                                    <button name="keyword-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                        Keyword(s) <i class="fas fa-check" alt="Tick to use keyword filter"></i><i class="fas fa-times" alt="X to remove keyword filter" style="display: none;"></i>
+                                    </button>
+                                </div>
+                                <div class="filter-btn-group col">
+                                    <button name="favourite-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
+                                        Favourite <i class="fas fa-check" alt="Tick to use favourite filter"></i><i class="fas fa-times" alt="X to remove favourite filter" style="display: none;"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <label class="form-control text-left no-select" for="random-songs-favourite">Song Is A Favourite</label>
-                    </div>
-                    <span class="subtext">*Note not all artists have favourite songs</span>
-                </div>
-            </div>
-
-            <div class="form-row mt-5">
-                <div data-field="results" class="form-group col">
-                    <label for="random-songs-results">Random/Relevant Results</label>
-                    <div id="random-songs-results">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="results" id="results-random" value="true" checked/>
-                            <label class="form-check-label" for="results-random">Random</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="results" id="results-relevant" value="false"/>
-                            <label class="form-check-label" for="results-relevant">Relevant</label>
-                          </div>
                     </div>
                 </div>
+
+                <form id="random-songs-form">
+
+                    <div class="form-row">
+                        <div data-field="genre" class="form-group col inactive">
+                            <label for="random-songs-genre">Genre</label>
+                            <input type="text" class="form-control" id="random-songs-genre" placeholder="Search preferred genre"/>
+                        </div>
+                        <div data-field="artist" class="form-group col inactive">
+                            <label for="random-songs-artist">Artist</label>
+                            <input type="text" class="form-control" id="random-songs-artist" placeholder="Enter preferred artist"/>
+                        </div>
+                        <div data-field="keyword" class="form-group col inactive">
+                            <label for="random-songs-keyword">Keyword(s)</label>
+                            <input type="text" class="form-control" id="random-songs-keyword" placeholder="Enter keyword(s) in song, artist, or lyrics"/>
+                        </div>
+                        <div data-field="track" class="form-group col inactive">
+                            <label for="random-songs-track">Track Title</label>
+                            <input type="text" class="form-control" id="random-songs-track" placeholder="Enter Track Title (partial or full)"/>
+                        </div>
+                        <div data-field="lyrics" class="form-group col inactive">
+                            <label for="random-songs-lyrics">Partial Lyrics</label>
+                            <input type="text" class="form-control" id="random-songs-lyrics" placeholder="Enter word(s) in lyrics"/>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div data-field="favourite" class="form-group col inactive mb-3">
+                            <label for="random-songs-favourite-group">Favourite (Song is favourite of most users)*</label>
+                            <div id="random-songs-favourite-group" class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" id="random-songs-favourite" checked/>
+                                    </div>
+                                </div>
+                                <label class="form-control text-left no-select" for="random-songs-favourite">Song Is A Favourite</label>
+                            </div>
+                            <span class="subtext">*Note not all artists have favourite songs</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row mt-5">
+                        <div data-field="results" class="form-group col">
+                            <label for="random-songs-results">Random/Relevant Results</label>
+                            <div id="random-songs-results">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="results" id="results-random" value="true" checked/>
+                                    <label class="form-check-label" for="results-random">Random</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="results" id="results-relevant" value="false"/>
+                                    <label class="form-check-label" for="results-relevant">Relevant</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="get-songs-btn" class="btn btn-secondary btn-lg py-3 px-5 mb-5 shadow">Get Songs</button>
+                </form>
+            </section>
+
+            <section id="result-section">
+                <table class="table table-striped table-bordered table-light mb-5" id="results-table">
+                    <thead>
+                        <th>Song Title</th>
+                        <th>Song Artist(s)</th>
+                        <th>Album Name</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+        </div>
+        <!-- END of content -->
+
+        <footer class="text-white py-5 px-3">
+            <div class="copyright">
+                <span>
+                    Copyright © 2021
+                </span>
             </div>
-            
-            <button type="submit" id="get-songs-btn" class="btn btn-secondary btn-lg py-3 px-5 mb-5 shadow">Get Songs</button>
-        </form>
-    </section>
+            <div class="api-credit">
+                <span>
+                    Powered by <a class="text-decoration-none" href="https://developer.musixmatch.com/">MusixMatch API</a>
+                </span>
+            </div>
+            <div class="social">
+                <a class="text-decoration-none text-white mx-2" href="https://www.linkedin.com/in/ben-kelly-a36b001b2/" target="_blank"><i class="fab fa-linkedin" aria-label="LinkedIn logo and link to my LinkedIn account"></i></a>
+                <a class="text-decoration-none text-white mx-2" href="https://github.com/gamefootage" target="_blank"><i class="fab fa-github" aria-label="GitHub logo and link to my GitHub account"></i></a>
+            </div>
+        </footer>
 
-    <section id="result-section">
-        <table class="table table-striped table-bordered table-light mb-5" id="results-table">
-            <thead>
-                <th>Song Title</th>
-                <th>Song Artist(s)</th>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </section>
+    </div>
+    <!-- END of page -->
 
-    <footer>
-
-    </footer>
     <script type="text/javascript" src="assets/js/randomSongs.js"></script>
     <script type="text/javascript" src="assets/js/index.js"></script>
     <script type="text/javascript" src="assets/js/genres.js"></script>

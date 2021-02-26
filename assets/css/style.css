@@ -3,22 +3,28 @@
 
 body {
     height: 100%;
-    margin: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* Gradient obtained from UI Gradients (https://uigradients.com)  */
-    background: #ff00cc;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #333399, #ff00cc);
-    background: linear-gradient(to right, #333399, #ff00cc);
+    /* ColorZilla CSS Gradient Generator */
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#333399+0,ff00cc+100 */
+    background: #333399; /* Old browsers */
+    background-image: -moz-linear-gradient(left,  transparent 60%, #ff00cc 100%); /* FF3.6-15 */
+    background-image: -webkit-linear-gradient(left,  transparent 60%,#ff00cc 100%); /* Chrome10-25,Safari5.1-6 */
+    background-image: linear-gradient(to right,  transparent 60%,#ff00cc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='#ff00cc',GradientType=1 ); /* IE6-9 */
+}
+
+.page-wrapper {
+    position: relative;
+    min-height: 100vh;
 }
 
 .navbar-dark {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* Gradient obtained from UI Gradients (https://uigradients.com)  */
-    background: #ff00cc !important;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #333399, #ff00cc) !important;
-    background: linear-gradient(to right, #333399, #ff00cc) !important;
+    /* ColorZilla CSS Gradient Generator */
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#333399+0,ff00cc+100 */
+    background: #333399 !important; /* Old browsers */
+    background-image: -moz-linear-gradient(left, transparent 60%, #ff00cc 100%) !important; /* FF3.6-15 */
+    background-image: -webkit-linear-gradient(left, transparent 60%,#ff00cc 100%) !important; /* Chrome10-25,Safari5.1-6 */
+    background-image: linear-gradient(to right, transparent 60%,#ff00cc 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='#ff00cc',GradientType=1 ); /* IE6-9 */
 }
 
 .heading {
@@ -44,9 +50,16 @@ body {
     display: block;
 }
 
+/* Content wrapper for footer */
+
+.content-wrapper {
+    padding-bottom: 2.5rem;
+}
+
+/* Homepage Section */
+
 #random-songs-filters {
     background: rgba(0, 0, 0, 0.6);
-    height: 8rem;
     line-height: 8rem;
 }
 
@@ -84,6 +97,48 @@ body {
     margin: auto;
 }
 
+/* END Homepage Section */
+    #charts-input-group {
+        width: 70%;
+        margin: auto;
+    }
+/* Charts Sectiom */
+
+/* END Charts section */
+
+footer {
+    position: relative;
+    height: 5.5rem;
+    bottom: 0;
+    width: 100%;
+    background-color: #371253;
+}
+
+footer div {
+    width: 33.33333%;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.api-credit {
+    right: 2%;
+    text-align: right;
+}
+
+.copyright {
+    left: 2%;
+    text-align: left;
+}
+
+.social {
+    margin: 0 auto;
+    left: 33.33333%;
+    font-size: 1.75rem;
+    text-align: center;
+}
+
 /* Disable text highlighting by user (https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting) */
 .no-select {
     -webkit-touch-callout: none;
@@ -92,4 +147,93 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+/* Spinner CSS taken from icons8.com (https://icons8.com/cssload/en/spinners/8) */
+
+
+.cssload-container{
+	position:relative;
+}
+	
+.cssload-whirlpool,
+.cssload-whirlpool::before,
+.cssload-whirlpool::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border: 1px solid rgb(204,204,204);
+	border-left-color: rgb(0,0,0);
+	border-radius: 974px;
+		-o-border-radius: 974px;
+		-ms-border-radius: 974px;
+		-webkit-border-radius: 974px;
+		-moz-border-radius: 974px;
+}
+
+.cssload-whirlpool {
+	margin: -24px 0 0 -24px;
+	height: 49px;
+	width: 49px;
+	animation: cssload-rotate 1150ms linear infinite;
+		-o-animation: cssload-rotate 1150ms linear infinite;
+		-ms-animation: cssload-rotate 1150ms linear infinite;
+		-webkit-animation: cssload-rotate 1150ms linear infinite;
+		-moz-animation: cssload-rotate 1150ms linear infinite;
+}
+
+.cssload-whirlpool::before {
+	content: "";
+	margin: -22px 0 0 -22px;
+	height: 43px;
+	width: 43px;
+	animation: cssload-rotate 1150ms linear infinite;
+		-o-animation: cssload-rotate 1150ms linear infinite;
+		-ms-animation: cssload-rotate 1150ms linear infinite;
+		-webkit-animation: cssload-rotate 1150ms linear infinite;
+		-moz-animation: cssload-rotate 1150ms linear infinite;
+}
+
+.cssload-whirlpool::after {
+	content: "";
+	margin: -28px 0 0 -28px;
+	height: 55px;
+	width: 55px;
+	animation: cssload-rotate 2300ms linear infinite;
+		-o-animation: cssload-rotate 2300ms linear infinite;
+		-ms-animation: cssload-rotate 2300ms linear infinite;
+		-webkit-animation: cssload-rotate 2300ms linear infinite;
+		-moz-animation: cssload-rotate 2300ms linear infinite;
+}
+
+
+
+@keyframes cssload-rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@-o-keyframes cssload-rotate {
+	100% {
+		-o-transform: rotate(360deg);
+	}
+}
+
+@-ms-keyframes cssload-rotate {
+	100% {
+		-ms-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes cssload-rotate {
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-moz-keyframes cssload-rotate {
+	100% {
+		-moz-transform: rotate(360deg);
+	}
 }
