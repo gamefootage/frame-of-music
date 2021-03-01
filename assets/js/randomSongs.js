@@ -1,11 +1,9 @@
-var formData;
 var apiKey = config.MY_API_KEY;
 var url;
 var randomSongs = [];
 window.usedPages = [];
 
 function getRandomSongs(formData) {
-    formData = formData
     randomSongs = [];
     window.usedPages = [];
     window.favourite = null;
@@ -35,7 +33,6 @@ function getRandomSongs(formData) {
         url += track;
     }
     if (formData.results) {
-        debugger;
         window.random = formData.results;
     }
 
@@ -48,7 +45,7 @@ function getRandomSongs(formData) {
             $("#spinner").css("visibility", "visible");
         }
     });
-};
+}
 
 function initialJsonpCallback(json) {
     var available = json.message.header.available;
@@ -69,7 +66,8 @@ function initialJsonpCallback(json) {
             alert("Sorry, I couldn't find any songs with these inputs. Please try again.");
             return false;
         } else {
-            alert("Our API's daily rate limit has been exceeded, please visit our site again tomorrow.")
+            alert("Our API's daily rate limit has been exceeded, please visit our site again tomorrow.");
+            return false;
         }
     }
 };
@@ -95,7 +93,6 @@ function getSongList() {
 }
 
 function addTrackCallback(json) {
-    var json = json;
     var trackList = json.message.body.track_list;
 
     if (window.favourite) {

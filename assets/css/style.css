@@ -53,7 +53,7 @@ body {
 /* Content wrapper for footer */
 
 .content-wrapper {
-    padding-bottom: 2.5rem;
+    padding-bottom: 10.5rem;
 }
 
 /* Homepage Section */
@@ -137,23 +137,27 @@ body {
     margin: auto;
 }
 
-th[name=chart-index] {
+.table-container {
+    column-count: 2;
+}
+
+th:first-child {
     width: 5rem;
 }
 
-[name='charts-results-table'] {
+.charts-results-table {
     background-color: #fff !important;
     border-color: #000 !important;
 }
 
-[name='charts-results-table'] td {
+.charts-results-table td {
     text-align: center;
 }
 
 /* END Charts section */
 
 footer {
-    position: relative;
+    position: absolute;
     height: 5.5rem;
     bottom: 0;
     width: 100%;

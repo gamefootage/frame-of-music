@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     $("#random-songs-form").on("submit", function(e) {
         e.preventDefault();
-        form = $(this);
+        var form = $(this);
         var activeFilters = form.find(".form-group:not(.inactive)");
         var formData = {};
 

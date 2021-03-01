@@ -45,7 +45,7 @@
 
         <header>
             <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg">
-                <a class="navbar-brand" href="\index.html"><img src="./assets/images/favicon.ico" alt="Frame Of Music Logo" /></a>
+                <a class="navbar-brand" href=".\index.html"><img src="./assets/images/favicon.ico" alt="Frame Of Music Logo" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" 
                     data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -53,10 +53,10 @@
                   <div class="collapse navbar-collapse" id="navbarDropdown">
                     <ul class="navbar-nav">
                       <li class="nav-item">
-                        <a class="nav-link" href="\index.html"><i class="fas fa-home"></i> Home</a>
+                        <a class="nav-link" href=".\index.html"><i class="fas fa-home"></i> Home</a>
                       </li>
                       <li class="nav-item active">
-                        <a class="nav-link" href="\charts.html"><i class="fas fa-globe-europe"></i> Global Charts <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href=".\charts.html"><i class="fas fa-globe-europe"></i> Global Charts <span class="sr-only">(current)</span></a>
                       </li>
                     </ul>
                   </div>
@@ -84,27 +84,27 @@
 
             <section id="charts-result-section">
 
-                <h2 class="text-white">Country Top 20</h2>
-                <div class="table-container">
-                    <table name="charts-results-table" class="table table-striped table-bordered">
-                        <thead>
-                            <th class="text-center" name="chart-index">#</th>
-                            <th class="text-center">Song Name</th>
-                            <th class="text-center">Artist</th>
-                        </thead>
-                        <tbody class="body1">
-                            
-                        </tbody>
+                <h2 id="charts-table-header" class="text-white text-center">Country Top 20</h2>
+                <div class="table-container px-3">
 
+                    <table id="charts-results-table-1" class="table table-striped table-bordered charts-results-table">
                         <thead>
                             <th class="text-center" name="chart-index">#</th>
                             <th class="text-center">Song Name</th>
                             <th class="text-center">Artist</th>
                         </thead>
-                        <tbody class="body2">
-                            
-                        </tbody>
+                        <tbody></tbody>
                     </table>
+
+                    <table id="charts-results-table-2" class="table table-striped table-bordered charts-results-table">
+                        <thead>
+                            <th class="text-center" name="chart-index">#</th>
+                            <th class="text-center">Song Name</th>
+                            <th class="text-center">Artist</th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
                 </div>
             </section>
 
