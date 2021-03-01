@@ -112,6 +112,8 @@ body {
 
 /* END Homepage Section */
 
+/* Charts Sectiom */
+
 #charts-form-section {
     margin-top: 7rem;
     margin-bottom: 7rem;
@@ -139,18 +141,14 @@ th[name=chart-index] {
     width: 5rem;
 }
 
-#charts-results-table {
-    -moz-column-count: 2;
-    -moz-column-gap: 20px;
-    -webkit-column-count: 2;
-    -webkit-column-gap: 20px;
-    column-count: 2;
-    column-gap: 20px;
+[name='charts-results-table'] {
     background-color: #fff !important;
     border-color: #000 !important;
 }
 
-/* Charts Sectiom */
+[name='charts-results-table'] td {
+    text-align: center;
+}
 
 /* END Charts section */
 

@@ -1,4 +1,5 @@
-var apiKey = '8ebb100f8dbd94b032393de929156869';
+var apiKey = config.MY_API_KEY;
+window.loaded = false;
 
 $(document).ready(function() {
     $("#global-charts-form").on("submit", function(e) {
@@ -11,7 +12,7 @@ $(document).ready(function() {
 
 function getCountryChart(countryCode) {
     debugger;
-    var url = `https://api.musixmatch.com/ws/1.1/chart.tracks.get?format=jsonp&callback=chartsJsonpCallback&page=1&page_size=20&country=${countryCode}&apikey=8ebb100f8dbd94b032393de929156869`
+    var url = `https://api.musixmatch.com/ws/1.1/chart.tracks.get?format=jsonp&callback=chartsJsonpCallback&page=1&page_size=21&country=${countryCode}&apikey=${apiKey}`
     $.ajax({
         url: url,
         type: "GET",
@@ -22,9 +23,9 @@ function getCountryChart(countryCode) {
 
 function chartsJsonpCallback(json) {
     debugger;
-    var available = json.message.header.available;
+    var trackList = json.message.body.track_list;
 
-    if (available < 1 || !available) {
+    if (!trackList.length) {
         if (json.message.header.status_code !== 401) {
             alert("This countries chart doesn't seem to exist. Please choose one of the availbel country options.");
             return false;
@@ -33,15 +34,34 @@ function chartsJsonpCallback(json) {
         }
     }
 
-    $("#charts-results-table tbody").empty();
-
-    var trackList = json.message.body.track_list;
+    $("[name='charts-results-table'] tbody").empty();
 
     trackList.forEach(function(item, index) {
-        $("#charts-results-table tbody").append(
-            `<tr>
-                <td>${index + 1}</td> <td>${item.track.track_name}</td>
-            </tr>`
-        )
+        if (index <= 9 && index !== 9) {
+            $("[name='charts-results-table'] tbody.body1").append(
+                `<tr>
+                    <td>${index + 1}</td> <td>${item.track.track_name}</td> <td>${item.track.artist_name}</td>
+                </tr>`
+            );
+        } else if (index == 9) {
+            $("[name='charts-results-table'] tbody.body1").append(
+                `<tr class="columnbreak">
+                    <td>${index + 1}</td> <td>${item.track.track_name}</td> <td>${item.track.artist_name}</td>
+                </tr>`
+            );
+        } else {
+            $("[name='charts-results-table'] tbody.body2").append(
+                `<tr>
+                    <td>${index + 1}</td> <td>${item.track.track_name}</td> <td>${item.track.artist_name}</td>
+                </tr>`
+            );
+        }
     });
+
+    $("[name='charts-results-table'].split tbody.body1").remove();
+
+    if (!window.loaded)
+        $(".table-container").columnize({ columns: 2 });
+
+    window.loaded = true;
 }

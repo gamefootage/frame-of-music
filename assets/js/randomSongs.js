@@ -1,4 +1,5 @@
 var formData;
+var apiKey = config.MY_API_KEY;
 var url;
 var randomSongs = [];
 window.usedPages = [];
@@ -39,7 +40,7 @@ function getRandomSongs(formData) {
     }
 
     $.ajax({
-        url: url + '&s_track_rating=desc&quorum_factor=1&page_size=1&page=1&apikey=8ebb100f8dbd94b032393de929156869',
+        url: url + '&s_track_rating=desc&quorum_factor=1&page_size=1&page=1&apikey=' + apiKey,
         type: "GET",
         dataType: "jsonp",
         jsonpCallback: "initialJsonpCallback",
@@ -78,14 +79,14 @@ function getSongList() {
     if (window.random) {
         var page = Math.floor( (Math.random() * window.pages) + 1 );
         $.ajax({
-            url: url + `&s_track_rating=desc&quorum_factor=1&page_size=100&page=${page}&apikey=8ebb100f8dbd94b032393de929156869`,
+            url: url + `&s_track_rating=desc&quorum_factor=1&page_size=100&page=${page}&apikey=${apiKey}`,
             type: "GET",
             dataType: "jsonp",
             jsonpCallback: "addRandomTrackCallback"
         });
     } else {
         $.ajax({
-            url: url + `&s_track_rating=desc&quorum_factor=1&page_size=100&page=1&apikey=8ebb100f8dbd94b032393de929156869`,
+            url: url + `&s_track_rating=desc&quorum_factor=1&page_size=100&page=1&apikey=${apiKey}`,
             type: "GET",
             dataType: "jsonp",
             jsonpCallback: "addTrackCallback"
@@ -155,7 +156,9 @@ function addRandomTrackCallback(json) {
     }
     if (trackList.length) {
         // Make sure track isn't already included
+        var attempts = 0;
         do {
+            attempts++;
             var trackIncluded = false;
 
             var trackIndex = getRandomInt(trackList.length);
@@ -166,14 +169,12 @@ function addRandomTrackCallback(json) {
             if (randomSongs) {
                 randomSongs.forEach(function(item) {
                     if (item.commontrack_id == trackID) {
-                        trackIncluded = true;
-                        return;
+                        return trackIncluded = true;
                     }
                 });
-            } else {
-                return rerun = false;
             }
-        } while(rerun);
+
+        } while(trackIncluded);
 
         randomSongs.push(track);
 
@@ -200,7 +201,9 @@ function drawResultsTable (randomSongs) {
     randomSongs.forEach(function(item) {
         $("#results-table tbody").append(
             `<tr>
-                <td id="${item.track_id}"><a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a></td>
+                <td id="${item.track_id}">
+                <a class="text-decoration-none" target="_blank" href="${item.track_share_url}" alt="${item.track_name} Share Link">${item.track_name}</a>
+                </td>
                 <td>${item.artist_name}</td>
                 <td>${item.album_name}</td>
             </tr>`
@@ -208,7 +211,9 @@ function drawResultsTable (randomSongs) {
 
         // Icon retrieved from Icons8 (https://icons8.com/icon/52182/explicit)
         if (item.explicit == 1) {
-            $(`#${item.track_id}`).append('<img data-toggle="tooltip" data-placement="top" title="Song contains explicit lyrics" class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/>');
+            $(`#${item.track_id}`).append(
+            '<img data-toggle="tooltip" data-placement="top" title="Explicit lyrics" class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/>'
+            );
         }
     });
 
