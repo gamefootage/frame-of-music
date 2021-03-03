@@ -74,6 +74,10 @@
                         aria-expanded="false" aria-controls="filter-panel"></button>
                     <div class="collapse container-fluid" id="filter-panel">
                         <div class="row" id="random-songs-filters">
+                            <div class="col-12">
+                                <button id="add-filters-btn" class="btn btn-success mr-1 my-2 filter-toggle">Activate all filters</button>
+                                <button id="rm-filters-btn" class="btn btn-danger my-2 filter-toggle" disabled>Deactivate all filters</button>
+                            </div>
                             <div class="filter-btn-group col-lg col-sm-4 col-6">
                                 <button name="genre-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
                                     Genre 
@@ -126,38 +130,44 @@
                         <div data-field="genre" class="form-group col-md col-12 inactive">
                             <label for="random-songs-genre">Genre</label>
                             <input type="text" class="form-control" id="random-songs-genre" placeholder="Search preferred genre"/>
+                            <small>Choose one of available genres</small>
                         </div>
                         <div data-field="artist" class="form-group col-md col-12 inactive">
                             <label for="random-songs-artist">Artist</label>
                             <input type="text" class="form-control" id="random-songs-artist" placeholder="Enter preferred artist"/>
+                            <small>Full or parital artist name</small>
                         </div>
                         <div data-field="keyword" class="form-group col-md col-12 inactive">
                             <label for="random-songs-keyword">Keyword(s)</label>
                             <input type="text" class="form-control" id="random-songs-keyword" placeholder="Enter keyword(s) in song, artist, or lyrics"/>
+                            <small>Words found in track title, artist name or lyrics</small>
                         </div>
                         <div data-field="track" class="form-group col-md col-12 inactive">
                             <label for="random-songs-track">Track Title</label>
                             <input type="text" class="form-control" id="random-songs-track" placeholder="Enter Track Title (partial or full)"/>
+                            <small>Full or partial track title</small>
                         </div>
                         <div data-field="lyrics" class="form-group col-md col-12 inactive">
                             <label for="random-songs-lyrics">Partial Lyrics</label>
                             <input type="text" class="form-control" id="random-songs-lyrics" placeholder="Enter word(s) in lyrics"/>
+                            <small>Enter a word or line found in the lyrics</small>
                         </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div data-field="favourite" class="form-group col inactive mb-3">
-                            <label for="random-songs-favourite-group">Favourite (Song is favourite of most users)*</label>
+                        <div data-field="favourite" class="form-group col-md col-12 inactive mb-3">
+                            <label for="random-songs-favourite-group">Favourite*</label>
                             <div id="random-songs-favourite-group" class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <input type="checkbox" id="random-songs-favourite" checked/>
                                     </div>
                                 </div>
-                                <label class="form-control text-left no-select" for="random-songs-favourite">Song Is A Favourite</label>
+                                <label class="form-control text-left no-select" for="random-songs-favourite">Favourite</label>
                             </div>
-                            <span class="subtext">*Note not all artists have favourite songs</span>
+                            <small>Song is a favaourite of most users <br/> *Note not all artists have favourite songs</small>
                         </div>
+                    </div>
+
+                    <div class="form-row">
+                        
                     </div>
 
                     <div class="form-row mt-5">

@@ -138,20 +138,27 @@ body {
 }
 
 .table-container {
-    column-count: 2;
+    max-height: 30rem;
+    overflow: scroll;
 }
 
-th:first-child {
+#charts-results-table thead {
+    position: sticky;
+    top: 0;
+}
+
+#charts-results-table th:first-child {
     width: 5rem;
 }
 
-.charts-results-table {
+#charts-results-table {
     background-color: #fff !important;
     border-color: #000 !important;
 }
 
-.charts-results-table td {
-    text-align: center;
+#charts-results-table th {
+    box-shadow: inset 1px 1px #000, 0 1px #000;
+    background: #fff;
 }
 
 /* END Charts section */

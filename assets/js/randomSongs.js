@@ -99,6 +99,8 @@ function addTrackCallback(json) {
         trackList = trackList.filter( (item) => item.track.num_favourite == 1 );
     }
     if (trackList.length) {
+        if (trackList.length < 5)
+            window.retrieveSongcount = trackList.length;
         let index = window.songsRetrieved;
         var track = trackList[index].track;
         var trackID = track.commontrack_id;

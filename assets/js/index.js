@@ -32,8 +32,8 @@ $(document).ready(function() {
     });
 
     $("button.filter-btn").on("click", function() {
-        var active = !($(this).data("active"));
-        $(this).data("active", active);
+        var active = !(this.dataset.active === "true");
+        this.dataset.active = active;
         // Split name at first "-" to get filter field
         var filterField = $(this).attr("name").split("-")[0];
 
@@ -53,6 +53,57 @@ $(document).ready(function() {
             $(`[data-field="${filterField}"]`).find("input").prop("required", false);
 
             $(`[data-field="${filterField}"]`).addClass("inactive");
+        }
+    });
+
+    $(".filter-btn").each(function () {
+        var target = this;
+        var observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            console.log(mutation);
+
+            if (mutation.attributeName == "data-active") {
+                var elements = $(".filter-btn");
+                var active = [];
+                var inactive = [];
+
+                elements.each(function () {
+                    if (this.dataset.active === "true" || this.dataset.active === true) {
+                        active.push(this);
+                    } else {
+                        inactive.push(this);
+                    }
+                });
+
+                if (active.length > 0) {
+                    $("#rm-filters-btn").prop("disabled", false);
+                    if (inactive.length == 0)
+                        $("#add-filters-btn").prop("disabled", true);
+                }
+                if (inactive.length > 0) {
+                    $("#add-filters-btn").prop("disabled", false);
+                    if (active.length == 0)
+                        $("#rm-filters-btn").prop("disabled", true);
+                }
+            }
+          });
+        });
+      
+        observer.observe(target, { attributes: true });
+    });
+
+    $(".filter-toggle").on("click", function() {
+        var activate = ($(this).attr("id").includes("add"));
+        if (activate) {
+            var buttons = $("button.filter-btn[data-active=false]");
+            buttons.each(function() {
+                $(this).click();
+            });
+        } else {
+            var buttons = $("button.filter-btn[data-active=true]");
+            buttons.each(function() {
+                $(this).click();
+            });
         }
     });
 });
