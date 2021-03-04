@@ -8,6 +8,10 @@ $(document).ready(function() {
         var countryCode = window.countries.find(item => Object.keys(item)[0] == countryName);
         getCountryChart(countryCode[countryName]);
     });
+
+    var place = $("#charts-country").attr("placeholder");
+    place += " (" + countries.length + " choices)";
+    $("#charts-country").attr("placeholder", place);
 });
 
 function getCountryChart(countryCode) {

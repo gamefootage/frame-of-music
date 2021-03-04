@@ -107,3 +107,24 @@ $(document).ready(function() {
         }
     });
 });
+
+var spinner = {
+    start: function() {
+        $(".sk-folding-cube").show();
+        $("body").append("<div class='modal-backdrop custom'></div>");
+        $("body").addClass("modal-open");
+    },
+    stop: function() {
+        $(".sk-folding-cube").hide();
+        $("body .modal-backdrop").remove();
+        $("body").removeClass("modal-open");
+    }
+};
+
+$(document)
+  .ajaxStart(function () {
+    spinner.start();
+  })
+  .ajaxStop(function () {
+    spinner.stop();
+  });

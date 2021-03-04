@@ -1,5 +1,7 @@
 
-$("#email-contact-form").on("submit", function(e) {
+$(document).ready(function() {
+
+    $("#email-contact-form").on("submit", function(e) {
     e.preventDefault();
 
     emailjs.sendForm('service_90gdmfq', 'template_hy9y9uj', '#email-contact-form')
@@ -10,5 +12,6 @@ $("#email-contact-form").on("submit", function(e) {
             console.log('FAILED...', error);
             alert("Uh oh! There was a problem sending your email! Please try again.");
         });
-
-})
+    });
+    
+});
