@@ -75,7 +75,7 @@ function initialJsonpCallback(json) {
 function getSongList() {
     // debugger;
     if (window.random) {
-        var page = Math.floor( (Math.random() * window.pages) + 1 );
+        var page = Math.floor((Math.random() * window.pages) + 1);
         $.ajax({
             url: url + `&s_track_rating=desc&quorum_factor=1&page_size=100&page=${page}&apikey=${apiKey}`,
             type: "GET",

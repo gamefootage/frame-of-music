@@ -164,6 +164,24 @@ body {
 
 /* END Charts section */
 
+
+/* Contact section */
+
+#contact-form-section::after {
+    content: "";
+    background: url("../images/email.png");
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+    top: 19.5%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+/* END Contact section */
+
 footer {
     position: absolute;
     height: 5.5rem;
