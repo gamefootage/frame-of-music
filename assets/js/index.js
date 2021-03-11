@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    $("#rm-filters-btn").prop("disabled", true);
+
     $("#random-songs-form").on("submit", function(e) {
         e.preventDefault();
         var form = $(this);
