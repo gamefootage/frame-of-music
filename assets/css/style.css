@@ -1,4 +1,4 @@
-/* Google Fonts Import */
+/* ---------------------------------------------------------------------------------------------------- Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Assistant&family=Montserrat&display=swap');
 
 body {
@@ -13,15 +13,18 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='#ff00cc',GradientType=1 ); /* IE6-9 */
 }
 
-.modal-backdrop.custom {
-    z-index: 1030;
-    opacity: 0.2;
+/* ---------------------------------------------------------------------------------------------------- Content and page wrapper for footer */
+
+.content-wrapper {
+    padding-bottom: 10.5rem;
 }
 
 .page-wrapper {
     position: relative;
     min-height: 100vh;
 }
+
+/* ---------------------------------------------------------------------------------------------------- Header */
 
 .navbar-dark {
     /* ColorZilla CSS Gradient Generator */
@@ -56,13 +59,7 @@ body {
     display: block;
 }
 
-/* Content wrapper for footer */
-
-.content-wrapper {
-    padding-bottom: 10.5rem;
-}
-
-/* Homepage Section */
+/* ---------------------------------------------------------------------------------------------------- Homepage Section */
 
 #random-songs-filters {
     background: rgba(0, 0, 0, 0.6);
@@ -103,7 +100,7 @@ body {
     background-repeat: no-repeat;
     opacity: 0.2;
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 0;
     bottom: 0;
     right: 0;
@@ -116,9 +113,9 @@ body {
     margin: auto;
 }
 
-/* END Homepage Section */
+/* ---------------------------------------------------------------------------------------------------- END Homepage Section */
 
-/* Charts Sectiom */
+/* ---------------------------------------------------------------------------------------------------- Charts Sectiom */
 
 #charts-form-section {
     margin-top: 7rem;
@@ -167,10 +164,10 @@ body {
     background: #fff;
 }
 
-/* END Charts section */
+/* ---------------------------------------------------------------------------------------------------- END Charts section */
 
 
-/* Contact section */
+/* ---------------------------------------------------------------------------------------------------- Contact section */
 
 #contact-form-section::after {
     content: "";
@@ -230,7 +227,8 @@ footer div {
     user-select: none;
 }
 
-/* CSS Spinner designed by Tobias Ahlin (https://tobiasahlin.com/spinkit/) */
+/* ---------------------------------------------------------------------------------------------------- CSS Spinner designed by Tobias Ahlin 
+(https://tobiasahlin.com/spinkit/) */
 
 .sk-folding-cube {
     /* margin: 20px auto;
@@ -244,7 +242,7 @@ footer div {
     transform: translateX(-50%) translateY(-50%);
     z-index: 1032; */
     position: fixed;
-    z-index: 999;
+    z-index: 1032;
     overflow: show;
     margin: auto;
     top: 0;
@@ -333,5 +331,20 @@ footer div {
         -webkit-transform: perspective(140px) rotateY(180deg);
                 transform: perspective(140px) rotateY(180deg);
         opacity: 0; 
+    }
+}
+
+/* ---------------------------------------------------------------------------------------------------- Custom Backdrop Rules for spinner */
+
+.modal-backdrop.custom {
+    z-index: 1030;
+    opacity: 0.4;
+}
+
+/* ---------------------------------------------------------------------------------------------------- Media Queries */
+
+@media only screen and (max-width: 450px) {
+    #form-section::after {
+        left: -15%;
     }
 }
