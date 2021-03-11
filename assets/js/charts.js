@@ -1,5 +1,4 @@
 var apiKey = config.MY_API_KEY;
-window.loaded = false;
 
 $(document).ready(function() {
     $("#global-charts-form").on("submit", function(e) {
@@ -16,7 +15,8 @@ $(document).ready(function() {
 
 function getCountryChart(countryCode) {
     $.ajax({
-        url: `https://api.musixmatch.com/ws/1.1/chart.tracks.get?format=jsonp&callback=chartsJsonpCallback&page=1&page_size=20&country=${countryCode}&apikey=${apiKey}`,
+        url: `https://api.musixmatch.com/ws/1.1/chart.tracks.get?
+        format=jsonp&callback=chartsJsonpCallback&page=1&page_size=20&country=${countryCode}&apikey=${apiKey}`,
         type: "GET",
         dataType: "jsonp",
         jsonpCallback: "chartsJsonpCallback",

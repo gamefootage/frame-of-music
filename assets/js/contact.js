@@ -2,9 +2,9 @@
 $(document).ready(function() {
 
     $("#email-contact-form").on("submit", function(e) {
-    e.preventDefault();
+        e.preventDefault();
 
-    emailjs.sendForm('service_90gdmfq', 'template_hy9y9uj', '#email-contact-form')
+        emailjs.sendForm('service_90gdmfq', 'template_hy9y9uj', '#email-contact-form')
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             alert("Your email was successfully sent!");
