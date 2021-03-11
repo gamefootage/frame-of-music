@@ -1,7 +1,6 @@
 var apiKey = config.MY_API_KEY;
 var url;
 var randomSongs = [];
-window.usedPages = [];
 
 function getRandomSongs(formData) {
     randomSongs = [];
@@ -211,7 +210,7 @@ function drawResultsTable (randomSongs) {
         // Icon retrieved from Icons8 (https://icons8.com/icon/52182/explicit)
         if (item.explicit == 1) {
             $(`#${item.track_id}`).append(
-            '<img data-toggle="tooltip" data-placement="top" title="Explicit lyrics" class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/>'
+            `<img data-toggle="tooltip" data-placement="top" title="Explicit lyrics" class="pl-2 pb-1" src="https://img.icons8.com/ios/20/000000/explicit.png"/>`
             );
         }
     });
