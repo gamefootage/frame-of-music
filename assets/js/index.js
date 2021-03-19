@@ -7,6 +7,7 @@ $(document).ready(function() {
         var form = $(this);
         var activeFilters = form.find(".form-group:not(.inactive)");
         var formData = {};
+        let valid = true;
 
         activeFilters.each(function() {
             let field = $(this).data("field");
@@ -21,7 +22,7 @@ $(document).ready(function() {
                     var value = genre[name];
                 } else {
                     alert("Invalid Genre! Please choose a valid answer.");
-                    return false;
+                    return valid = false;
                 }
             } else {
                 var value = $(this).find(`#random-songs-${field}`).val();
@@ -30,7 +31,8 @@ $(document).ready(function() {
         });
 
         console.log(formData);
-        getRandomSongs(formData);
+        if (valid)
+            getRandomSongs(formData);
     });
 
     $("button.filter-btn").on("click", function() {
