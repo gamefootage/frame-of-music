@@ -59,6 +59,11 @@ body {
     display: block;
 }
 
+#navbar-brand { 
+    height: 48px;
+    width: 48px;
+}
+
 /* ---------------------------------------------------------------------------------------------------- Homepage Section */
 
 #random-songs-filters {
