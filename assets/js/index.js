@@ -24,6 +24,9 @@ $(document).ready(function() {
                     alert("Invalid Genre! Please choose a valid answer.");
                     return valid = false;
                 }
+            } else if(field == "lyrics") {
+                let str = $(this).find(`#random-songs-${field}`).val();
+                var value = str.replace(/ /g, "%20");
             } else {
                 var value = $(this).find(`#random-songs-${field}`).val();
             }
