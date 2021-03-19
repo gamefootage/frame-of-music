@@ -61,6 +61,7 @@ function initialJsonpCallback(json) {
         window.songsRetrieved = 0;
         getSongList();
     } else {
+        $("#spinner").css("visibility", "hidden");
         if (json.message.header.status_code !== 401) {
             alert("Sorry, I couldn't find any songs with these inputs. Please try again.");
             return false;
