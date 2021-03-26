@@ -147,7 +147,7 @@ body {
 
 .table-container {
     max-height: 30rem;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #charts-results-table thead {
