@@ -4,31 +4,32 @@ $(document).ready(function() {
 
     $("#random-songs-form").on("submit", function(e) {
         e.preventDefault();
-        var form = $(this);
-        var activeFilters = form.find(".form-group:not(.inactive)");
-        var formData = {};
+        let form = $(this);
+        let activeFilters = form.find(".form-group:not(.inactive)");
+        let formData = {};
         let valid = true;
 
         activeFilters.each(function() {
             let field = $(this).data("field");
+            let value;
             if (field == "favourite") {
-                var value = $(this).find(`#random-songs-${field}`).prop("checked") ? 1 : 0;
+                value = $(this).find(`#random-songs-${field}`).prop("checked") ? 1 : 0;
             } else if (field == "results") {
-                var value = ($(this).find(`#random-songs-${field} input[type=radio]:checked`).val() == "true");
+                value = ($(this).find(`#random-songs-${field} input[type=radio]:checked`).val() == "true");
             } else if (field == "genre") {
-                var name = $(this).find(`#random-songs-${field}`).val();
-                var genre = window.genres.find(item => Object.keys(item)[0] == name);
+                let name = $(this).find(`#random-songs-${field}`).val();
+                let genre = window.genres.find(item => Object.keys(item)[0] == name);
                 if (genre) {
-                    var value = genre[name];
+                    value = genre[name];
                 } else {
                     alert("Invalid Genre! Please choose a valid answer.");
                     return valid = false;
                 }
             } else if(field == "lyrics") {
                 let str = $(this).find(`#random-songs-${field}`).val();
-                var value = str.replace(/ /g, "%20");
+                value = str.replace(/ /g, "%20");
             } else {
-                var value = $(this).find(`#random-songs-${field}`).val();
+                value = $(this).find(`#random-songs-${field}`).val();
             }
             formData[field] = value;
         });
@@ -39,10 +40,10 @@ $(document).ready(function() {
     });
 
     $("button.filter-btn").on("click", function() {
-        var active = !(this.dataset.active === "true");
+        let active = !(this.dataset.active === "true");
         this.dataset.active = active;
         // Split name at first "-" to get filter field
-        var filterField = $(this).attr("name").split("-")[0];
+        let filterField = $(this).attr("name").split("-")[0];
 
         if (active) {
             $(this).removeClass("btn-outline-success");
@@ -64,15 +65,15 @@ $(document).ready(function() {
     });
 
     $(".filter-btn").each(function () {
-        var target = this;
-        var observer = new MutationObserver(function(mutations) {
+        let target = this;
+        const observer = new MutationObserver(function(mutations) {
           mutations.forEach(function(mutation) {
             console.log(mutation);
 
             if (mutation.attributeName == "data-active") {
-                var elements = $(".filter-btn");
-                var active = [];
-                var inactive = [];
+                const elements = $(".filter-btn");
+                let active = [];
+                let inactive = [];
 
                 elements.each(function () {
                     if (this.dataset.active === "true" || this.dataset.active === true) {
@@ -100,14 +101,14 @@ $(document).ready(function() {
     });
 
     $(".filter-toggle").on("click", function() {
-        var activate = ($(this).attr("id").includes("add"));
+        let activate = ($(this).attr("id").includes("add"));
         if (activate) {
-            var buttons = $("button.filter-btn[data-active=false]");
+            let buttons = $("button.filter-btn[data-active=false]");
             buttons.each(function() {
                 $(this).click();
             });
         } else {
-            var buttons = $("button.filter-btn[data-active=true]");
+            let buttons = $("button.filter-btn[data-active=true]");
             buttons.each(function() {
                 $(this).click();
             });
@@ -115,7 +116,7 @@ $(document).ready(function() {
     });
 });
 
-var spinner = {
+const spinner = {
     start: function() {
         $(".sk-folding-cube").show();
         $("body").append("<div class='modal-backdrop custom'></div>");

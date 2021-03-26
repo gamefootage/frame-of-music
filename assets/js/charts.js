@@ -1,14 +1,19 @@
-var apiKey = config.MY_API_KEY;
+let apiKey = config.MY_API_KEY;
 
 $(document).ready(function() {
+    let countryName;
+    let countryCode;
     $("#global-charts-form").on("submit", function(e) {
         e.preventDefault();
-        var countryName = $("#charts-country").val();
-        var countryCode = window.countries.find(item => Object.keys(item)[0] == countryName);
-        getCountryChart(countryCode[countryName]);
+        countryName = $("#charts-country").val();
+        countryCode = window.countries.find(item => Object.keys(item)[0] == countryName);
+        if (countryCode)
+            getCountryChart(countryCode[countryName]);
+        else
+            alert("The text you entered is not an available country. Please try again");
     });
 
-    var place = $("#charts-country").attr("placeholder");
+    let place = $("#charts-country").attr("placeholder");
     place += " (" + countries.length + " choices)";
     $("#charts-country").attr("placeholder", place);
 });
@@ -16,7 +21,7 @@ $(document).ready(function() {
 function getCountryChart(countryCode) {
     $.ajax({
         url: `https://api.musixmatch.com/ws/1.1/chart.tracks.get?
-        format=jsonp&callback=chartsJsonpCallback&page=1&page_size=20&country=${countryCode}&apikey=${apiKey}`,
+        format=jsonp&callback=chartsJsonpCallback&page=1&page_size=21&country=${countryCode}&apikey=${apiKey}`,
         type: "GET",
         dataType: "jsonp",
         jsonpCallback: "chartsJsonpCallback",
@@ -24,7 +29,7 @@ function getCountryChart(countryCode) {
 }
 
 function chartsJsonpCallback(json) {
-    var trackList = json.message.body.track_list;
+    let trackList = json.message.body.track_list;
 
     if (!trackList) {
         if (json.message.header.status_code !== 401) {
@@ -39,7 +44,6 @@ function chartsJsonpCallback(json) {
     $("#charts-results-table tbody").empty();
 
     $("#charts-table-header").text($("#charts-country").val() + " Top 20");
-
     trackList.forEach(function(item, index) {
         $("#charts-results-table tbody").append(
             `<tr>

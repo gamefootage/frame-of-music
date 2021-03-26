@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var genreNames = [];
+    let genreNames = [];
     window.genres.forEach( obj => genreNames.push(Object.keys(obj)[0]) );
     $("#random-songs-genre").autocomplete({
         source: genreNames,

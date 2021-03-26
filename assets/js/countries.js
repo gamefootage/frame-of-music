@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var countryNames = [];
+    let countryNames = [];
     window.countries.forEach( obj => countryNames.push(Object.keys(obj)[0]) )
     $("#charts-country").autocomplete({
         source: countryNames,

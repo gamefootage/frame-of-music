@@ -1,39 +1,37 @@
-var apiKey = config.MY_API_KEY;
-var url;
-var randomSongs = [];
+const apiKey = config.MY_API_KEY;
+let url;
+let songList = [];
 
 function getRandomSongs(formData) {
-    randomSongs = [];
+    songList = [];
     window.usedPages = [];
     window.favourite = null;
     url = 'https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=initialJsonpCallback&f_lyrics_language=en';
 
     if (formData.lyrics) {
-        var lyrics = `&f_has_lyrics=1&q_lyrics=${formData.lyrics}`;
+        let lyrics = `&f_has_lyrics=1&q_lyrics=${formData.lyrics}`;
         url += lyrics;
     }
     if (formData.genre) {
-        var genre = `&f_music_genre_id=${formData.genre}`;
+        let genre = `&f_music_genre_id=${formData.genre}`;
         url += genre;
     }
     if (formData.artist) {
-        var artist = `&q_artist=${formData.artist}`;
+        let artist = `&q_artist=${formData.artist}`;
         url += artist;
     }
     if (formData.favourite) {
         window.favourite = formData.favourite;
     }
     if (formData.keyword) {
-        var keyword = `&q=${formData.keyword}`;
+        let keyword = `&q=${formData.keyword}`;
         url += keyword;
     }
     if (formData.track) {
-        var track = `&q_track=${formData.track}`;
+        let track = `&q_track=${formData.track}`;
         url += track;
     }
-    if (formData.results) {
-        window.random = formData.results;
-    }
+    window.random = formData.results;
 
     $.ajax({
         url: url + '&s_track_rating=desc&quorum_factor=1&page_size=1&page=1&apikey=' + apiKey,
@@ -47,11 +45,11 @@ function getRandomSongs(formData) {
 }
 
 function initialJsonpCallback(json) {
-    var available = json.message.header.available;
+    let available = json.message.header.available;
     // Initial logic on how to page results from (https://github.com/kodie/rnd-song/blob/master/index.js)
 
     if (available > 0) {
-        var pages = Math.ceil(available / 100);
+        let pages = Math.ceil(available / 100);
         if (available > 5) {
             window.retrieveSongcount = 5;
         } else {
@@ -70,12 +68,12 @@ function initialJsonpCallback(json) {
             return false;
         }
     }
-};
+}
 
 function getSongList() {
-    // debugger;
+    debugger;
     if (window.random) {
-        var page = Math.floor((Math.random() * window.pages) + 1);
+        let page = Math.floor((Math.random() * window.pages) + 1);
         $.ajax({
             url: url + `&s_track_rating=desc&quorum_factor=1&page_size=100&page=${page}&apikey=${apiKey}`,
             type: "GET",
@@ -93,7 +91,8 @@ function getSongList() {
 }
 
 function addTrackCallback(json) {
-    var trackList = json.message.body.track_list;
+    let trackList = json.message.body.track_list;
+    let track;
 
     if (window.favourite) {
         trackList = trackList.filter( (item) => item.track.num_favourite == 1 );
@@ -102,20 +101,19 @@ function addTrackCallback(json) {
         if (trackList.length < 5)
             window.retrieveSongcount = trackList.length;
         let index = window.songsRetrieved;
-        var track = trackList[index].track;
-        var trackID = track.commontrack_id;
+        track = trackList[index].track;
+        let trackID = track.commontrack_id;
 
 
         // Make sure track isn't already included
-        var trackIncluded = false;
-        if (randomSongs) {
+        let trackIncluded = false;
+        let rerun = false;
+        if (songList) {
             do {
                 if (index >= trackList.length) {
-                    rerun = false;
                     return trackIncluded = true;
                 }
-                var rerun = false;
-                randomSongs.forEach(function(item) {
+                songList.forEach(function(item) {
                     if (item.commontrack_id == trackID) {
                         track = trackList[index++].track;
                         return rerun = true;
@@ -124,17 +122,17 @@ function addTrackCallback(json) {
             } while(rerun);
         }
         if (!trackIncluded) {
-            randomSongs.push(track);
+            songList.push(track);
 
             window.songsRetrieved++;
             if (window.songsRetrieved < window.retrieveSongcount) {
                 addTrackCallback(json);
             } else {
-                drawResultsTable(randomSongs);
+                drawResultsTable(songList);
             }
         } else {
-            if (randomSongs) {
-                drawResultsTable(randomSongs);
+            if (songList) {
+                drawResultsTable(songList);
             } else {
                 alert("Sorry, I couldn't find any songs with these inputs. Please try again.");
             }
@@ -147,26 +145,26 @@ function addTrackCallback(json) {
 
 function addRandomTrackCallback(json) {
     // debugger;
-    var json = json;
-    var trackList = json.message.body.track_list;
+    let trackList = json.message.body.track_list;
+    let track;
 
     if (window.favourite) {
         trackList = trackList.filter( (item) => item.track.num_favourite == 1 );
     }
     if (trackList.length) {
         // Make sure track isn't already included
-        var attempts = 0;
+        let attempts = 0;
+        let trackIncluded = false;
         do {
             attempts++;
-            var trackIncluded = false;
 
-            var trackIndex = getRandomInt(trackList.length);
-            var track = trackList[trackIndex].track;
+            let trackIndex = getRandomInt(trackList.length);
+            track = trackList[trackIndex].track;
 
-            var trackID = track.commontrack_id;
+            let trackID = track.commontrack_id;
 
-            if (randomSongs) {
-                randomSongs.forEach(function(item) {
+            if (songList) {
+                songList.forEach(function(item) {
                     if (item.commontrack_id == trackID) {
                         return trackIncluded = true;
                     }
@@ -175,7 +173,7 @@ function addRandomTrackCallback(json) {
 
         } while(trackIncluded);
 
-        randomSongs.push(track);
+        songList.push(track);
 
         window.songsRetrieved++;
         if (window.songsRetrieved < window.retrieveSongcount) {
@@ -185,7 +183,7 @@ function addRandomTrackCallback(json) {
                 addRandomTrackCallback(json);
             }
         } else {
-            drawResultsTable(randomSongs);
+            drawResultsTable(songList);
         }
 
     } else {
@@ -193,11 +191,11 @@ function addRandomTrackCallback(json) {
     }
 }
 
-function drawResultsTable (randomSongs) {
+function drawResultsTable (results) {
 
     $("#results-table tbody").empty();
 
-    randomSongs.forEach(function(item) {
+    results.forEach(function(item) {
         $("#results-table tbody").append(
             `<tr>
                 <td id="${item.track_id}">
