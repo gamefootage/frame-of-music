@@ -252,7 +252,7 @@ footer div {
     z-index: 1032; */
     position: fixed;
     z-index: 1032;
-    overflow: show;
+    overflow: visible;
     margin: auto;
     top: 0;
     left: 0;
