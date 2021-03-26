@@ -22,8 +22,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 
     <!-- EmailJS 2.0 -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script type="text/javascript">
+    <script  src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script >
         $(document).ready(function () {
         emailjs.init("user_V9mDxVtgMkGIDi88gKLzr");
         });
@@ -71,7 +71,7 @@
             </nav>
             <div class="heading p-3">
                 <h1 class="title">Contact Us</h1>
-                <h2 class="subtitle">Feel free to contact us with any suggestions, or problems you encounter with the site! Just leave your info below</h1>
+                <h2 class="subtitle">Feel free to contact us with any suggestions, or problems you encounter with the site! Just leave your info below</h2>
             </div>
         </header>
 
@@ -83,13 +83,13 @@
                         <div class="col-12 px-lg-5">
                             <form id="email-contact-form" class="form-row px-5">
                                 <label for="user_name">Your Name</label>
-                                <input type="text" class="form-control mb-3" name="user_name" placeholder="Enter your name" required>
+                                <input type="text" class="form-control mb-3" id="user_name" name="user_name" placeholder="Enter your name" required>
                                 <label for="user_email">Your Email Address</label>
-                                <input type="email" class="form-control mb-3" name="user_email" placeholder="Enter your email address" required>
+                                <input type="email" class="form-control mb-3" id="user_email" name="user_email" placeholder="Enter your email address" required>
                                 <label for="subject">Subject</label>
-                                <input type="text" class="form-control mb-4" name="subject" placeholder="Enter email subject" required>
+                                <input type="text" class="form-control mb-4" id="subject" name="subject" placeholder="Enter email subject" required>
                                 <label for="message">Email Body</label>
-                                <textarea class="form-control" name="message" cols="30" rows="8" placeholder="Enter message here" required></textarea>
+                                <textarea class="form-control" id="message" name="message" cols="30" rows="8" placeholder="Enter message here" required></textarea>
 
                                 <button type="submit" class="btn btn-secondary mt-3 mx-auto">Send Message</button>
                             </form>
@@ -125,9 +125,9 @@
     <!-- END of page -->
 
     <!-- Local JS Files -->
-    <script type="text/javascript" src="assets/js/global.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script type="text/javascript" src="./assets/js/contact.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script src="./assets/js/contact.js"></script>
 
     <link rel="stylesheet" href="assets/css/style.css">
 </body>

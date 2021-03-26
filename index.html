@@ -84,43 +84,43 @@
                             <div class="filter-btn-group col-lg col-sm-4 col-6">
                                 <button name="genre-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
                                     Genre 
-                                    <i class="fas fa-check" alt="Tick to use genre filter"></i>
-                                    <i class="fas fa-times" alt="X to remove genre filter" style="display: none;"></i>
+                                    <i class="fas fa-check" aria-label="Tick to use genre filter"></i>
+                                    <i class="fas fa-times" aria-label="X to remove genre filter" style="display: none;"></i>
                                 </button>
                             </div>
                             <div class="filter-btn-group col-lg col-sm-4 col-6">
                                 <button name="artist-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
                                     Artist 
-                                    <i class="fas fa-check" alt="Tick to use artist filter"></i>
-                                    <i class="fas fa-times" alt="X to remove artist filter" style="display: none;"></i>
+                                    <i class="fas fa-check" aria-label="Tick to use artist filter"></i>
+                                    <i class="fas fa-times" aria-label="X to remove artist filter" style="display: none;"></i>
                                 </button>
                             </div>
                             <div class="filter-btn-group col-lg col-sm-4 col-6">
                                 <button name="track-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
                                     Track 
-                                    <i class="fas fa-check" alt="Tick to use track filter"></i>
-                                    <i class="fas fa-times" alt="X to remove track filter" style="display: none;"></i>
+                                    <i class="fas fa-check" aria-label="Tick to use track filter"></i>
+                                    <i class="fas fa-times" aria-label="X to remove track filter" style="display: none;"></i>
                                 </button>
                             </div>
                             <div class="filter-btn-group col-lg col-sm-4 col-6">
                                 <button name="lyrics-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto">
                                     Lyrics 
-                                    <i class="fas fa-check" alt="Tick to use lyric filter"></i>
-                                    <i class="fas fa-times" alt="X to remove lyric filter" style="display: none;"></i>
+                                    <i class="fas fa-check" aria-label="Tick to use lyric filter"></i>
+                                    <i class="fas fa-times" aria-label="X to remove lyric filter" style="display: none;"></i>
                                 </button>
                             </div>
                             <div class="filter-btn-group col-lg col-sm-4 col-6">
                                 <button name="keyword-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto px-1">
                                     Keyword 
-                                    <i class="fas fa-check" alt="Tick to use keyword filter"></i>
-                                    <i class="fas fa-times" alt="X to remove keyword filter" style="display: none;"></i>
+                                    <i class="fas fa-check" aria-label="Tick to use keyword filter"></i>
+                                    <i class="fas fa-times" aria-label="X to remove keyword filter" style="display: none;"></i>
                                 </button>
                             </div>
                             <div class="filter-btn-group col-lg col-sm-4 col-6">
                                 <button name="favourite-filter-btn" data-active="false" class="btn btn-lg btn-outline-success filter-btn mx-auto px-1">
                                     Favourite 
-                                    <i class="fas fa-check" alt="Tick to use favourite filter"></i>
-                                    <i class="fas fa-times" alt="X to remove favourite filter" style="display: none;"></i>
+                                    <i class="fas fa-check" aria-label="Tick to use favourite filter"></i>
+                                    <i class="fas fa-times" aria-label="X to remove favourite filter" style="display: none;"></i>
                                 </button>
                             </div>
                         </div>
@@ -156,7 +156,7 @@
                             <small>Enter a word or line found in the lyrics</small>
                         </div>
                         <div data-field="favourite" class="form-group col-md col-12 inactive mb-3">
-                            <label for="random-songs-favourite-group">Favourite*</label>
+                            <label>Favourite*</label>
                             <div id="random-songs-favourite-group" class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -175,7 +175,7 @@
 
                     <div class="form-row mt-5">
                         <div data-field="results" class="form-group col">
-                            <label for="random-songs-results">Random/Relevant Results</label>
+                            <label>Random/Relevant Results</label>
                             <div id="random-songs-results">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="results" id="results-random" value="true" checked/>
@@ -190,7 +190,7 @@
                         </div>
                     </div>
                     
-                    <button alt="Get Songs button" type="submit" id="get-songs-btn" class="btn btn-secondary btn-lg py-3 px-5 mb-5 shadow">Get Songs</button>
+                    <button aria-label="Get Songs button" type="submit" id="get-songs-btn" class="btn btn-secondary btn-lg py-3 px-5 mb-5 shadow">Get Songs</button>
                 </form>
 
             </section>
@@ -199,9 +199,11 @@
 
                 <table class="table table-striped table-bordered table-light mb-5" id="results-table">
                     <thead>
-                        <th>Song Title</th>
-                        <th>Song Artist(s)</th>
-                        <th>Album Name</th>
+                        <tr>
+                            <th>Song Title</th>
+                            <th>Song Artist(s)</th>
+                            <th>Album Name</th>
+                        </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
@@ -236,11 +238,11 @@
     <!-- END of page -->
 
     <!-- Local JS Files -->
-    <script type="text/javascript" src="assets/js/global.js"></script>
-    <script type="text/javascript" src="assets/js/config.js"></script>
-    <script type="text/javascript" src="assets/js/randomSongs.js"></script>
-    <script type="text/javascript" src="assets/js/index.js"></script>
-    <script type="text/javascript" src="assets/js/genres.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/randomSongs.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/genres.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </body>
 </html>
