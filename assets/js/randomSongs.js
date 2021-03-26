@@ -71,7 +71,6 @@ function initialJsonpCallback(json) {
 }
 
 function getSongList() {
-    debugger;
     if (window.random) {
         let page = Math.floor((Math.random() * window.pages) + 1);
         $.ajax({
@@ -144,7 +143,6 @@ function addTrackCallback(json) {
 }
 
 function addRandomTrackCallback(json) {
-    // debugger;
     let trackList = json.message.body.track_list;
     let track;
 
