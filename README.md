@@ -2,6 +2,8 @@
 
 Frame Of Music will provide you with random songs based on your preferences. You can select a genre, artist, album, certain lyrics, or all of the above!
 Whether you want popular songs on the charts right now, rock songs from any time, or songs with lyrics e.g. songs containing "heartbreak". If your tired of your same old Spotify playlist, find some bangers to spice it up, with FrameOfMusic (powered by Musixmatch API). As well as random songs there is also a chart feature that lets you look at the top 20 songs from the provided countries.
+
+## Site Link – [Click Here](https://gamefootage.github.io/frame-of-music/charts.html)
  
 ## UX
  
